@@ -13,7 +13,7 @@
     <!-- header end -->
     <!-- main start -->
     <el-main>
-      <div class="main-search+">
+      <div class="main-search">
         <el-input placeholder="请输入内容" v-model="input3" class="input-with-select">
           <el-select v-model="select" slot="prepend" placeholder="请选择分类">
             <el-option label="书籍" value="1"></el-option>
@@ -55,7 +55,7 @@ export default {
     return {
       item: 'img',
       input3: '',
-      select: 1
+      select: ''
     }
   }
 }
