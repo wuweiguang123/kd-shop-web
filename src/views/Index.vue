@@ -23,12 +23,22 @@
           <el-button slot="append" icon="el-icon-search" />
         </el-input>
       </div>
-      <div class="banner">
-        <el-carousel height="250px">
-          <el-carousel-item v-for="item in banners" :key="item">
-            <img :src="item">
-          </el-carousel-item>
-        </el-carousel>
+      <div class="main-header">
+        <div class="left">
+          <ul>
+            <li>书籍刊物</li>
+            <li>电子设备</li>
+            <li>生活日用</li>
+            <li>服装衣物</li>
+          </ul>
+        </div>
+        <div class="banner">
+          <el-carousel height="250px">
+            <el-carousel-item v-for="item in banners" :key="item">
+              <img :src="item">
+            </el-carousel-item>
+          </el-carousel>
+        </div>
       </div>
     </el-main>
     <!-- main end -->
@@ -48,17 +58,34 @@
 </template>
 
 <script>
+import { catelogs } from '@/utils/api.js' // 导入api接口
 
 export default {
   name: 'Index',
   data() {
     return {
+      catalogs: [],
       banners: ['https://kd-shop.oss-cn-beijing.aliyuncs.com/banner1.png',
                 'https://kd-shop.oss-cn-beijing.aliyuncs.com/banner2.png',
                 'https://kd-shop.oss-cn-beijing.aliyuncs.com/banner3.png'],
+      goods: [],
       input3: '',
       select: ''
     }
+  },
+  // 组件创建时执行
+  created() {
+      this.getIndexData()
+  },
+  methods: {
+      getIndexData() {
+          catelogs().then(res => {
+              // TODO 处理响应数据
+              console.log(res)
+          }).catch(error => {
+              console.log(error)
+          })
+      }
   }
 }
 </script>
@@ -102,8 +129,25 @@ export default {
       background-color: #fff;
     }
   }
+  .main-header{
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .left{
+    float: left;
+    margin-left: 60px;
+    ul li {
+      width: 200px;
+      height: 40px;
+      line-height: 40px;
+      background-color: #ffffff;
+    }
+  }
   .banner {
+    float: right;
     width: 500px;
+    margin-right: 342px;
     // border: 1px solid red;
     img {
       width: 500px;

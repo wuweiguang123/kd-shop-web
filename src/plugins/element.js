@@ -2,7 +2,7 @@ import Vue from 'vue'
 import {
   Button, Switch,
   Form, FormItem, Input, Select, Option,
-  Message, MessageBox,
+  Message, MessageBox, Notification,
   Container, Header, Aside, Main, Footer,
   Menu, MenuItem, Submenu,
   Breadcrumb, BreadcrumbItem,
@@ -40,3 +40,4 @@ Vue.use(Carousel)
 Vue.use(CarouselItem)
 Vue.prototype.$message = Message
 Vue.prototype.$confirm = MessageBox.confirm
+Vue.prototype.$notify = Notification

@@ -73,38 +73,6 @@ export default {
   },
   methods: {
     doLogin (formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          this.$http
-            .post('user/login', this.userForm)
-            .then((response) => {
-              // console.log(response)
-              // 当用户名密码错误时
-              if (response.data.code === '-1') {
-                this.$message({
-                  message: response.data.message,
-                  type: 'error'
-                })
-                this.userForm.userName = ''
-                this.userForm.password = ''
-                return false;
-              }
-              this.$message({
-                message: response.data.message,
-                type: 'success'
-              })
-              // token只在网站打开期间生效，所以将token保存在sessionStorage中
-              window.sessionStorage.setItem('token', response.data.token);
-              // 通过编程式路由导航跳转到后台主页，路由地址是home
-              this.$router.push('/home')
-            })
-            .catch((error) => {
-              console.log(error)
-            });
-        } else {
-          return false
-        }
-      })
     },
     resetForm (formName) {
       this.$refs[formName].resetFields()
