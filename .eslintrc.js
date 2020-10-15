@@ -20,6 +20,11 @@ module.exports = {
     "no-debugger": 0, // 是否允许使用debugger调试， 规则同上
     "indent": 'off', //缩进风格(强制使用一致的缩进)
     "linebreak-style": 0, // 取消换行符\n或\r\n的验证()
+    "no-tabs": 0,  //禁用tab
+    'vue/singleline-html-element-content-newline': 'off',
+    'vue/multiline-html-element-content-newline': 'off',
+    'vue/max-attributes-per-line': 'off',
+    'vue/attributes-order': 'off'
   },
 
   'extends': [

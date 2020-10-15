@@ -15,18 +15,18 @@
     <el-main>
       <div class="main-search">
         <el-input placeholder="请输入内容" v-model="input3" class="input-with-select">
-          <el-select v-model="select" slot="prepend" placeholder="请选择分类">
-            <el-option label="书籍" value="1"></el-option>
-            <el-option label="数码" value="2"></el-option>
-            <el-option label="日用品" value="3"></el-option>
+          <el-select v-model="select" slot="prepend" placeholder="请选择">
+            <el-option label="书籍" value="1" />
+            <el-option label="数码" value="2" />
+            <el-option label="日用品" value="3" />
           </el-select>
-          <el-button slot="append" icon="el-icon-search"></el-button>
+          <el-button slot="append" icon="el-icon-search" />
         </el-input>
       </div>
       <div class="banner">
         <el-carousel height="250px">
-          <el-carousel-item v-for="item in 4" :key="item">
-            <h3 class="small">{{ item }}</h3>
+          <el-carousel-item v-for="item in banners" :key="item">
+            <img :src="item">
           </el-carousel-item>
         </el-carousel>
       </div>
@@ -43,7 +43,7 @@
         </div>
       </div>
     </el-footer>
-    <el-backtop target=".logo"></el-backtop>
+    <el-backtop target=".logo" />
   </el-container>
 </template>
 
@@ -53,7 +53,9 @@ export default {
   name: 'Index',
   data() {
     return {
-      item: 'img',
+      banners: ['https://kd-shop.oss-cn-beijing.aliyuncs.com/banner1.png',
+                'https://kd-shop.oss-cn-beijing.aliyuncs.com/banner2.png',
+                'https://kd-shop.oss-cn-beijing.aliyuncs.com/banner3.png'],
       input3: '',
       select: ''
     }
@@ -62,7 +64,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
   .el-header, .el-footer {
     background-color: #FFF;
     color: #333;
@@ -88,14 +89,25 @@ export default {
     background-color: #E9EEF3;
     color: #333;
     text-align: center;
-    line-height: 160px;
   }
-  .input-with-select {
-    width: 500px;
+  .main-search {
+    width: 550px;
+    height: 60px;
+    margin: 0 auto;
+
+    .el-select {
+      width: 120px;
+    }
+    .input-with-select .el-input-group__prepend {
+      background-color: #fff;
+    }
   }
   .banner {
-    width: 75%;
-    border: 1px solid red;
+    width: 500px;
+    // border: 1px solid red;
+    img {
+      width: 500px;
+    }
   }
   body > .el-container {
     margin-bottom: 40px;
