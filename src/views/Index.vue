@@ -26,10 +26,9 @@
       <div class="main-header">
         <div class="left">
           <ul>
-            <li>书籍刊物</li>
-            <li>电子设备</li>
-            <li>生活日用</li>
-            <li>服装衣物</li>
+            <li v-for="catalog in catalogs" :key="catalog.id">
+              {{catalog.name}}
+            </li>
           </ul>
         </div>
         <div class="banner">
@@ -82,6 +81,7 @@ export default {
           catelogs().then(res => {
               // TODO 处理响应数据
               console.log(res)
+              this.catalogs = res.data
           }).catch(error => {
               console.log(error)
           })
