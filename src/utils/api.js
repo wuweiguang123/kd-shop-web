@@ -5,6 +5,7 @@ export function catelogs(params) {
   return get('catelog/catelogList')
 }
 
+//添加商品
 export function addGoods(params) {
   return post('good/add', params)
 }
